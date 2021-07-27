@@ -1,0 +1,198 @@
+\usepackage{tikz}
+\usepackage{comment}
+\beamertemplatenavigationsymbolsempty
+
+%--------------------------------------------------------
+% Define how the page counter will be displayed on slides
+%--------------------------------------------------------
+\newcommand{\footlinepagecounter}%
+	{\insertframenumber{}/\inserttotalframenumber}
+%--------------------------------------------------------
+
+% Layout scheme for outer elements: split(give ALL section & subsection) or infolines(give CURRENT section & subsection)
+%\useoutertheme{infolines}
+\useoutertheme[subsection=false]{miniframes}
+\usecolortheme{whale}
+\useinnertheme{rounded}
+\usecolortheme{orchid}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+
+\setbeamertemplate{navigation symbols}{}
+
+
+
+%--------------------------------------------------------
+% Set up some lengths
+%--------------------------------------------------------
+% A paper width for the footline
+\newlength{\halfpaperwidth}
+% The left margin
+\newlength{\headingleftmargin}
+% Paper width minus margins
+\newlength{\headingwidthminusmargins}
+% Height of the heading block
+\newlength{\headingheight}
+% Height of the footer block
+\newlength{\footerheight}
+% The height for the titlepageheader in the title page
+\newlength{\titlepageheaderheight}
+% The height for the footer in the title page
+\newlength{\titlepagefooterheight}
+% The height for the main title block
+\newlength{\titlepagemaintitleblockheight}
+% The height for the subtitle block
+\newlength{\titlepagesubtitleblockheight}
+% The height for the name and date block
+\newlength{\titlepagenamedateblockheight}
+% The height for the institution block
+%\newlength{\titlepageinstitutionheight}
+% The lengths for spacing between name and date
+\newlength{\titlepagespaceundername}
+\newlength{\titlepagespaceunderdate}
+
+% The length for the light thin bar
+\setlength{\headingleftmargin}{0.05573\paperwidth}
+\setlength{\headingwidthminusmargins}{\paperwidth}
+\addtolength{\headingwidthminusmargins}{-\headingleftmargin}
+\setlength{\headingheight}{0.1\paperheight}
+\setlength{\footerheight}{0.09017\paperheight}
+
+\setlength{\titlepageheaderheight}{0.17\paperheight}
+\setlength{\titlepagefooterheight}{0.0\paperheight}
+\setlength{\titlepagemaintitleblockheight}{0.16\paperheight}
+\setlength{\titlepagesubtitleblockheight}{0.1\paperheight}
+\setlength{\titlepagenamedateblockheight}{0.42\paperheight}
+
+\setlength{\titlepagespaceundername}{16pt}
+\setlength{\titlepagespaceunderdate}{5pt}
+
+\pgfdeclareimage[width=\paperwidth,height=0.9575\paperheight]{bg}{image/111.png}
+\setbeamertemplate{background}{\pgfuseimage{bg}}
+
+%--------------------------------------------------------
+
+%--------------------------------------------------------
+% Set up the scheme for use
+% with beamer
+%--------------------------------------------------------
+
+% Define colour names
+\definecolor{ustcblue}{rgb}{0 0.3008 0.5820}%如果是其他大学或者你想换成其他颜色风格，可以直接修改最后一个花括号中的参数，比如北京大学rgb(139,0,18)将最后花括号改成{0.54297 0 0.0703}即可
+
+
+% Set element colours
+\setbeamercolor{title}{bg=black!5!white, fg=ustcblue}
+\setbeamercolor{subtitle}{bg=white, fg=ustcblue}
+\setbeamercolor{titlepageheader}{bg=white,fg=black}
+\setbeamercolor{titlepagefooter}{bg=white,fg=black}
+\setbeamercolor{block title}{fg=white,bg=black}
+\setbeamercolor{block body}{fg=black,bg=ustcblue!10!white}
+\setbeamercolor{structure}{bg=white, fg=ustcblue}
+
+
+% \setbeamercolor{alerted text}{fg=darkOrange}
+
+%--------------------------------------------------------
+% Set font sizes
+%--------------------------------------------------------
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{subtitle}{size=\footnotesize,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{structure}{size=\normalsize,series=\bfseries}
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+
+%-----------------------------------------------------
+% Define title page
+%-----------------------------------------------------
+
+\setbeamertemplate{title page}
+{%	
+	
+\begin{beamercolorbox}[sep=0cm,right,wd=0.0001\paperwidth,ht=\titlepageheaderheight,rightskip=\headingleftmargin]{pkured!5!white}
+\vskip0.0361\titlepageheaderheight
+\end{beamercolorbox}
+
+
+\begin{beamercolorbox}[center,wd=0.92\paperwidth,ht=\titlepagemaintitleblockheight,rounded=true,shadow=true]{title}
+  \usebeamerfont{title}\inserttitle
+  \vskip\titlepagespaceunderdate%
+  \usebeamerfont{subtitle}\insertsubtitle
+  \vskip\titlepagespaceunderdate%
+\end{beamercolorbox}
+
+\begin{beamercolorbox}[center,wd=\paperwidth,ht=\titlepagenamedateblockheight]{white}
+      \usebeamerfont{author}\insertauthor\\
+      \vskip\titlepagespaceunderdate%
+      \medskip
+	  \usebeamerfont{institute}\insertinstitute\\
+	  \vskip\titlepagespaceunderdate%
+	  \medskip
+      \usebeamerfont{date}\insertdate \;\;
+      \vskip\titlepagespaceunderdate%
+\end{beamercolorbox}%
+\begin{beamercolorbox}[center,wd=\paperwidth,ht=\titlepagefooterheight]{titlepagefooter}
+\end{beamercolorbox}
+}
+
+
+% Footline: AUTHOR | TITLE | DATE FRAMENUMBER
+\defbeamertemplate*{footline}{ru theme}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1.2ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1.2ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1.2ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\pgfdeclarehorizontalshading[frametitle.bg,frametitle right.bg]{beamer@frametitleshade}{\paperheight}{%
+  color(0pt)=(frametitle.bg);
+  color(\paperwidth)=(frametitle right.bg)}
+
+
+
+
+\setbeamercolor{frametitle}{bg=black!15!white,fg=ustcblue}
+
+
+
+
+%--------------------------------------------------------
+% 右下角导航键 Navigation Symbols 可以注释掉
+%--------------------------------------------------------
+% \setbeamertemplate{headline}[default]
+% \setbeamercolor{mycolor}{fg=white,bg=structure!30}
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{footline}{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=.5ex,right,rightskip=1em]{frametitle}%
+			\usebeamercolor[fg]{navigation symbols}\insertslidenavigationsymbol%
+			\insertframenavigationsymbol%
+			\insertsubsectionnavigationsymbol%
+			\insertsectionnavigationsymbol%
+			\insertdocnavigationsymbol%
+			\insertbackfindforwardnavigationsymbol%
+		\end{beamercolorbox}%
+	}%
+	\vskip0.5pt%
+}{}
